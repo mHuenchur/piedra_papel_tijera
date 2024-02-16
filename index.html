@@ -2,10 +2,40 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <script src="script.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Juego - Piedra papel o Tijera</title>
+        <script src="script.js" defer></script>
+        <link rel="stylesheet" href="styles.css">
     </head>
     <body>
-        <h1>Ve a la consola del navegador para ver los resultados!</h1>
-        <h2>prueba cargando la pagina si no han aparecido los resultados a la primera...</h2>
+        <div class="contenedorPadre">
+            <div class="contenedor">
+
+                <h1>Piedra, Papel o Tijera</h1>
+    
+                <h2>Gana el que tenga 5 puntos!</h2>
+
+                <div class="contenedorPuntajes">
+                    <div class="nombres">
+                        <p>Mi puntaje</p>
+                        <p>El puntaje de la computadora</p>
+                        
+                    </div>
+                    
+                    <div class="puntajes">
+                        <p id="jugador"></p>
+                        <p id="maquina"></p>
+                    </div>
+                </div>
+            
+                <div class="botonera">
+                    <button id="botonPiedra">Piedra</button>
+                    <button id="botonPapel">Papel</button>
+                    <button id="botonTijera">Tijera</button>
+                </div>
+    
+                <p id="mensaje"></p>
+            </div>
+        </div>
     </body>
 </html>

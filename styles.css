@@ -1,0 +1,47 @@
+.contenedorPadre {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    height: 700px;
+}
+.contenedor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 500px;
+    border-radius: 20px;
+    background-color: rgb(251, 225, 253);
+    height: fit-content;
+}
+.contenedorPuntajes {
+    display: flex;
+    flex-direction: column;
+}
+div > p {
+    flex: 1;
+}
+.nombres > p {
+    margin-bottom: 0;
+    text-align:center;
+}
+.nombres,
+.puntajes {
+    display: flex;
+}
+
+.botonera {
+    justify-content: space-around;
+    margin-top: 10px;
+}
+p {
+    text-align: center;
+}
+h1 {
+    margin-bottom: 0px;
+}
+
+body {
+    background-color: rgb(166, 223, 245);
+    font-family: Arial, Helvetica, sans-serif;
+}

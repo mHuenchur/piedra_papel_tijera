@@ -1,15 +1,31 @@
+let botonPiedra = document.querySelector('#botonPiedra');
+let botonPapel = document.querySelector('#botonPapel');
+let botonTijera = document.querySelector('#botonTijera');
+let contenedor = document.querySelector('.contenedor');
+
+
+const mensaje = document.querySelector('#mensaje');
+const ganador = document.querySelector('#ganador');
+
+
+
+const player_name = prompt("Cual es tu nombre?");
+
+let player_w = 0;
+let computer_w = 0;
+
+const jugador = document.querySelector('#jugador');
+const maquina = document.querySelector('#maquina');
+jugador.textContent = player_w;
+maquina.textContent = computer_w;
+
+const choices = ["piedra", "papel", "tijera"];
+
 function getComputerChoice(){
     const choice = choices[Math.floor(Math.random() * choices.length)];
     return choice;
 }
 
-function getPlayerChoice(){
-    let p_choice;
-    p_choice = prompt("Elije: piedra, papel o tijera");
-    return p_choice.toLowerCase();
-}
-
-const choices = ["piedra", "papel", "tijera"];
 
 function play_round(playerSelection, computerSelection){
     var mensaje;
@@ -56,37 +72,35 @@ function play_round(playerSelection, computerSelection){
     return mensaje;
 }
 
-function game(){
-    player_w = 0;
-    computer_w = 0;
+function game(playerChoice){
+    const playerSelection = playerChoice;
+    const computerSelection = getComputerChoice();
+    mensaje.textContent = play_round(playerSelection, computerSelection);
 
-    console.log("Gana el mejor de 5. A JUGAR!!");
-    console.log("----------");
+    jugador.textContent = player_w;
+    maquina.textContent = computer_w;
 
-    for(let intento = 0; intento < 5; intento++){
-        const playerSelection = getPlayerChoice();
-        const computerSelection = getComputerChoice();
-        console.log("Jugador: " + playerSelection);
-        console.log("Computadora: " + computerSelection);
-        console.log(play_round(playerSelection, computerSelection));
-        console.log("----------");
-    }
-    console.log("RESULTADOS:");
-    console.log("Victorias de " + player_name + ": "+ player_w);
-    console.log("Victorias de la computadora: "+ computer_w);
-    console.log("----------");
-    if(player_w > computer_w){
-        console.log("GANADOR: "+ player_name + "!");
-    }else{
-        if(player_w < computer_w){
-            console.log("GANADOR: La Computadora :)");
-        }else{
-            console.log("¡¡EMPATE!!");
-        }
+    if(player_w == 5 || computer_w == 5){
+        resultado();
     }
 }
 
-const player_name = prompt("¿Cual es tu nombre?");
-let player_w;
-let computer_w;
-game();
+function resultado(){
+    const p = document.createElement('p');
+    p.style.cssText = 'margin-top: 0; margin-bottom: 10px; padding: 10px 40px 10px 40px; border-radius: 4px;';
+    
+    if(player_w == 5){
+        p.style.cssText += 'border: 5px solid transparent; border-image: linear-gradient(to bottom right, #b827fc 0%, #2c90fc 25%, #b8fd33 50%, #fec837 75%, #fd1892 100%); border-image-slice: 1;'
+        p.textContent = "GANADOR: "+ player_name + "!";
+    }else{
+        p.style.cssText += 'border: 5px solid black;';
+        p.textContent = "GANADOR: La Computadora  >:)";
+    }
+    contenedor.appendChild(p);
+}
+
+botonPiedra.addEventListener('click', () => game("piedra"));
+
+botonPapel.addEventListener('click', () => game("papel"));
+
+botonTijera.addEventListener('click', () => game("tijera"));
